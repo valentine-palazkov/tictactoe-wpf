@@ -5,16 +5,19 @@
 
 @mytag
 Scenario: Should not be able to replace tic with tak
-	Given field:
-    | _0_ |
-    | ___ |
-    | ___ |
-	When try to update field with:
-    | _x_ |
-    | ___ |
-    | ___ |
-	Then the result should be:
-    | _0_ |
-    | ___ |
-    | ___ |
+	Given board:
+    | 1 | 2 | 3 |
+    |   | x |   |
+    |   |   |   |
+    |   |   |   |
+	When try to update board with:
+    | 1 | 2 | 3 |
+    |   | 0 |   |
+    |   |   |   |
+    |   |   |   |
+	Then the board should be:
+    | 1 | 2 | 3 |
+    |   | x |   |
+    |   |   |   |
+    |   |   |   |
 

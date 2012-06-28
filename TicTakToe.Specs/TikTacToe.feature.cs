@@ -76,31 +76,61 @@ namespace TicTakToe.Specs
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                        "_0_"});
+                        "1",
+                        "2",
+                        "3"});
             table1.AddRow(new string[] {
-                        "___"});
+                        "",
+                        "x",
+                        ""});
             table1.AddRow(new string[] {
-                        "___"});
+                        "",
+                        "",
+                        ""});
+            table1.AddRow(new string[] {
+                        "",
+                        "",
+                        ""});
 #line 8
- testRunner.Given("field:", ((string)(null)), table1);
+ testRunner.Given("board:", ((string)(null)), table1);
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
-                        "_x_"});
+                        "1",
+                        "2",
+                        "3"});
             table2.AddRow(new string[] {
-                        "___"});
+                        "",
+                        "0",
+                        ""});
             table2.AddRow(new string[] {
-                        "___"});
-#line 12
- testRunner.When("try to update field with:", ((string)(null)), table2);
+                        "",
+                        "",
+                        ""});
+            table2.AddRow(new string[] {
+                        "",
+                        "",
+                        ""});
+#line 13
+ testRunner.When("try to update board with:", ((string)(null)), table2);
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
-                        "_0_"});
+                        "1",
+                        "2",
+                        "3"});
             table3.AddRow(new string[] {
-                        "___"});
+                        "",
+                        "x",
+                        ""});
             table3.AddRow(new string[] {
-                        "___"});
-#line 16
- testRunner.Then("the result should be:", ((string)(null)), table3);
+                        "",
+                        "",
+                        ""});
+            table3.AddRow(new string[] {
+                        "",
+                        "",
+                        ""});
+#line 18
+ testRunner.Then("the board should be:", ((string)(null)), table3);
 #line hidden
             this.ScenarioCleanup();
         }

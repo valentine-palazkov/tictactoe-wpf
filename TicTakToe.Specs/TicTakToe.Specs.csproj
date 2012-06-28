@@ -49,7 +49,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameBoardAssertions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TableRowsExtension.cs" />
+    <Compile Include="TicCacToeScenarioContext.cs" />
     <Compile Include="TicTacToeStepDefinition.cs" />
     <Compile Include="TikTacToe.feature.cs">
       <AutoGen>True</AutoGen>

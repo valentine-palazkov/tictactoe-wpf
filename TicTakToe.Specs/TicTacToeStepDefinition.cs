@@ -1,49 +1,30 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using FluentAssertions;
+﻿using FluentAssertions;
+using NUnit.Framework;
 using TechTalk.SpecFlow;
 
 namespace TicTakToe.Specs
 {
-    public static class TableRowsExtension
-    {
-        public static GameField ToGameField(this TableRows theRows)
-        {
-            var gameField = new GameField();
-
-        }
-    }
-
-    public class GameField
-    {
-    }
-
     [Binding]
     public class TicTacToeStepDefinition
     {
-        [Given(@"field:")]
+        [Given(@"board:")]
         public void GivenField(Table table)
         {
-            var rows = table.Rows.ToGameField();
+            GameBoard field = table.Rows.ToGameField();
+            TicCacToeScenarioContext.Board = field;
         }
 
-        [Then(@"the result should be:")]
+        [Then(@"the board should be:")]
         public void ThenTheResultShouldBe(Table table)
         {
-            ScenarioContext.Current.Pending();
+            TicCacToeScenarioContext.Board.Should().Match(table.Rows);
+            TicCacToeScenarioContext.Board.Should().Be(table.Rows);
         }
 
-        [When(@"try to update field with:")]
+        [When(@"try to update board with:")]
         public void WhenTryToUpdateFieldWith(Table table)
         {
-            ScenarioContext.Current.Pending();
-        }
-    }
-
-    public class GameFieldInfo
-    {
-        public GameFieldInfo()
-        {
+            table.Rows.Update(TicCacToeScenarioContext.Board);
         }
     }
 }
