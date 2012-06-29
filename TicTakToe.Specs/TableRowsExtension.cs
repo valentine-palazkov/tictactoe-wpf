@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using FluentAssertions;
 using TechTalk.SpecFlow;
 
 namespace TicTakToe.Specs
@@ -18,21 +19,22 @@ namespace TicTakToe.Specs
         {
             for (int y = 0; y < theRows.Count; y++)
             {
-                string row = theRows[0].Values.First();
+                string[] row = theRows[0].Values.ToArray();
                 for (int x = 0; x < row.Length; x++)
                 {
                     board[x, y] = CreateCell(row[x]);
                 }
             }
+
         }
 
-        private static BoardCell CreateCell(char cellChar)
+        private static BoardCell CreateCell(string cellChar)
         {
-            switch (Char.ToLower(cellChar))
+            switch (cellChar.ToLower())
             {
-                case 'x':
+                case "x":
                     return new TickedCell();
-                case '0':
+                case "0":
                     return new TackedCell();
                 default:
                     return new EmptyCell();

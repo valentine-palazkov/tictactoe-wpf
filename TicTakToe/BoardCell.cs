@@ -1,6 +1,6 @@
 namespace TicTakToe
 {
-    public class BoardCell
+    public abstract class BoardCell
     {
     }
 }

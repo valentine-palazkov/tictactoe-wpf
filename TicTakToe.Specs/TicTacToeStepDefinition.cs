@@ -1,5 +1,4 @@
-﻿using FluentAssertions;
-using NUnit.Framework;
+﻿using FluentAssertions.Assertions;
 using TechTalk.SpecFlow;
 
 namespace TicTakToe.Specs
@@ -10,21 +9,19 @@ namespace TicTakToe.Specs
         [Given(@"board:")]
         public void GivenField(Table table)
         {
-            GameBoard field = table.Rows.ToGameField();
-            TicCacToeScenarioContext.Board = field;
+            TicTacToeScenarioContext.Board = table.Rows.ToGameField();
         }
 
         [Then(@"the board should be:")]
         public void ThenTheResultShouldBe(Table table)
         {
-            TicCacToeScenarioContext.Board.Should().Match(table.Rows);
-            TicCacToeScenarioContext.Board.Should().Be(table.Rows);
+            TicTacToeScenarioContext.Board.Should().Match(table.Rows);
         }
 
         [When(@"try to update board with:")]
         public void WhenTryToUpdateFieldWith(Table table)
         {
-            table.Rows.Update(TicCacToeScenarioContext.Board);
+            table.Rows.Update(TicTacToeScenarioContext.Board);
         }
     }
 }

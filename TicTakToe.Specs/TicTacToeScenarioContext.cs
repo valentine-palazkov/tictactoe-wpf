@@ -2,7 +2,7 @@ using TechTalk.SpecFlow;
 
 namespace TicTakToe.Specs
 {
-    public class TicCacToeScenarioContext
+    public class TicTacToeScenarioContext
     {
         public static GameBoard Board
         {
