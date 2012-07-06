@@ -21,7 +21,7 @@ namespace TicTakToe.Specs
 
             for (int y = 0; y < rows.Count; y++)
             {
-                string[] row = rows[0].Values.ToArray();
+                string[] row = rows[y].Values.ToArray();
                 for (int x = 0; x < row.Length; x++)
                 {
                     board[x, y].ToString().Should().Be(row[x]);

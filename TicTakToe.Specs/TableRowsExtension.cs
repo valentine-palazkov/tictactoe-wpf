@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using FluentAssertions;
 using TechTalk.SpecFlow;
 
 namespace TicTakToe.Specs
@@ -10,25 +9,33 @@ namespace TicTakToe.Specs
         public static GameBoard ToGameField(this TableRows theRows)
         {
             var board = new GameBoard();
-            theRows.Update(board);
-
+            ModifyBoard(theRows, board, (gameBoard, x, y, cell) => board.Initialize(x, y, cell));
             return board;
         }
 
         public static void Update(this TableRows theRows, GameBoard board)
         {
-            for (int y = 0; y < theRows.Count; y++)
-            {
-                string[] row = theRows[0].Values.ToArray();
-                for (int x = 0; x < row.Length; x++)
-                {
-                    board[x, y] = CreateCell(row[x]);
-                }
-            }
-
+            ModifyBoard(theRows, board, (gameBoard, x, y, cell) =>
+                                            {
+                                                if(board[x, y].GetType() != cell.GetType())
+                                                    board.Move(x, y, cell);
+                                            });
         }
 
-        private static BoardCell CreateCell(string cellChar)
+        private static void ModifyBoard(TableRows theRows, GameBoard board, Action<GameBoard, int, int, IBoardCell> BoardCellApplyAction)
+        {
+            for (int y = 0; y < theRows.Count; y++)
+            {
+                string[] row = theRows[y].Values.ToArray();
+                for (int x = 0; x < row.Length; x++)
+                {
+                    IBoardCell boardCell = CreateCell(row[x]);
+                    BoardCellApplyAction(board, x, y, boardCell);
+                }
+            }
+        }
+
+        private static IBoardCell CreateCell(string cellChar)
         {
             switch (cellChar.ToLower())
             {
@@ -37,7 +44,7 @@ namespace TicTakToe.Specs
                 case "0":
                     return new TackedCell();
                 default:
-                    return new EmptyCell();
+                    return BoardCellSafeNull.Instance;
             }
         }
     }
