@@ -12,11 +12,11 @@ namespace TicTakToe.Specs
             TicTacToeScenarioContext.Board = table.Rows.ToGameField();
         }
 
-        
-        [Given(@"the last move is at \[1, 2]")]
-        public void MakeMove(/*int x, int y*/)
+
+        [StepDefinition(@"the last move is at \[(\d+), (\d+)\]")]
+        public void MakeMove(int x, int y)
         {
-            TicTacToeScenarioContext.Board.SetLastMove(0, 1);
+            TicTacToeScenarioContext.Board.SetLastMove(x, y);
         }
 
         [When(@"try to update board with:")]
