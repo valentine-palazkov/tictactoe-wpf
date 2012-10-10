@@ -13,12 +13,6 @@ namespace TicTakToe.Specs
         }
 
 
-        [StepDefinition(@"the last move is at \[(\d+), (\d+)\]")]
-        public void MakeMove(int x, int y)
-        {
-            TicTacToeScenarioContext.Board.SetLastMove(x, y);
-        }
-
         [When(@"try to update board with:")]
         public void WhenTryToUpdateFieldWith(Table table)
         {

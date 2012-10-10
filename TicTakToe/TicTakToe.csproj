@@ -56,6 +56,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BoardCell.cs" />
+    <Compile Include="MoveSafeNull.cs" />
+    <Compile Include="IGameMove.cs" />
+    <Compile Include="INullable.cs" />
+    <Compile Include="SafeNull.cs" />
     <Compile Include="TackedCell.cs" />
     <Compile Include="TickedCell.cs" />
     <Page Include="MainWindow.xaml">

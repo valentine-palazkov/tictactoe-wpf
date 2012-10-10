@@ -6,46 +6,61 @@ namespace TicTakToe.Specs
 {
     public static class TableRowsExtension
     {
+
+
         public static GameBoard ToGameField(this TableRows theRows)
         {
             var board = new GameBoard();
-            ModifyBoard(theRows, board, (gameBoard, x, y, cell) => board.Initialize(x, y, cell));
+            var game = new Game(board);
+
+            ModifyBoard(theRows, game);
             return board;
         }
 
-        public static void Update(this TableRows theRows, GameBoard board)
+        public static void Update(this TableRows theRows, Game game)
         {
-            ModifyBoard(theRows, board, (gameBoard, x, y, cell) =>
-                                            {
-                                                if(board[x, y].GetType() != cell.GetType())
-                                                    board.Move(x, y, cell);
-                                            });
+            ModifyBoard(theRows, game);
         }
 
-        private static void ModifyBoard(TableRows theRows, GameBoard board, Action<GameBoard, int, int, IBoardCell> BoardCellApplyAction)
+        private static void ModifyBoard(TableRows theRows, Game game)
         {
             for (int y = 0; y < theRows.Count; y++)
             {
                 string[] row = theRows[y].Values.ToArray();
                 for (int x = 0; x < row.Length; x++)
                 {
-                    IBoardCell boardCell = CreateCell(row[x]);
-                    BoardCellApplyAction(board, x, y, boardCell);
+                    var gameMove = CreateMove(row[x], x, y);
+                    game.Make(gameMove);
                 }
             }
         }
 
-        private static IBoardCell CreateCell(string cellChar)
+        private static IGameMove CreateMove(string cellChar, int x, int y)
         {
             switch (cellChar.ToLower())
             {
                 case "x":
-                    return new TickedCell();
+                    return new TickMove(x, y);
                 case "0":
-                    return new TackedCell();
+                    return new TacMove(x, y);
                 default:
-                    return BoardCellSafeNull.Instance;
+                    return MoveSafeNull.Instance;
             }
+        }
+    }
+
+    public class Game
+    {
+        private readonly GameBoard board;
+
+        public Game(GameBoard board)
+        {
+            this.board = board;
+        }
+
+        public void Make(IGameMove gameMove)
+        {
+            throw new NotImplementedException();
         }
     }
 }

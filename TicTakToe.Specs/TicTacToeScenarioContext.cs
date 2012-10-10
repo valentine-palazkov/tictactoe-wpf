@@ -4,10 +4,12 @@ namespace TicTakToe.Specs
 {
     public class TicTacToeScenarioContext
     {
+        private const string Gameboard = "GameBoard";
+
         public static GameBoard Board
         {
-            get { return (GameBoard) Current["GameBoard"]; }
-            set { Current["GameBoard"] = value; }
+            get { return (GameBoard) Current[Gameboard]; }
+            set { Current[Gameboard] = value; }
         }
 
         private static ScenarioContext Current
