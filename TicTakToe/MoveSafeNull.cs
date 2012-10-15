@@ -12,7 +12,7 @@ namespace TicTakToe
             get { return true; }
         }
 
-        public void Execute(GameBoard board)
+        public void Execute()
         {
         }
     }

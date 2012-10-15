@@ -86,10 +86,12 @@ this.ScenarioSetup(scenarioInfo);
                         ""});
 #line 4
  testRunner.Given("board:", ((string)(null)), table1);
+#line 8
+ testRunner.When("try to put a tac at {0, 1}");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "",
-                        "0",
+                        "x",
                         ""});
             table2.AddRow(new string[] {
                         "",
@@ -99,8 +101,19 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "",
                         ""});
-#line 8
- testRunner.When("try to update board with:", ((string)(null)), table2);
+#line 9
+ testRunner.Then("the board should be:", ((string)(null)), table2);
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Should allow tac after tic")]
+        public virtual void ShouldAllowTacAfterTic()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Should allow tac after tic", ((string[])(null)));
+#line 14
+this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "",
@@ -114,19 +127,10 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "",
                         ""});
-#line 12
- testRunner.Then("the board should be:", ((string)(null)), table3);
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Should allow tac after tic")]
-        public virtual void ShouldAllowTacAfterTic()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Should allow tac after tic", ((string[])(null)));
-#line 17
-this.ScenarioSetup(scenarioInfo);
+#line 15
+ testRunner.Given("board:", ((string)(null)), table3);
+#line 19
+ testRunner.When("try to put a tac at {1, 1}");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                         "",
@@ -134,44 +138,14 @@ this.ScenarioSetup(scenarioInfo);
                         ""});
             table4.AddRow(new string[] {
                         "",
-                        "",
+                        "0",
                         ""});
             table4.AddRow(new string[] {
                         "",
                         "",
                         ""});
-#line 18
- testRunner.Given("board:", ((string)(null)), table4);
-#line hidden
-            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
-                        "",
-                        "x",
-                        ""});
-            table5.AddRow(new string[] {
-                        "",
-                        "0",
-                        ""});
-            table5.AddRow(new string[] {
-                        "",
-                        "",
-                        ""});
-#line 22
- testRunner.When("try to update board with:", ((string)(null)), table5);
-#line hidden
-            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
-                        "",
-                        "x",
-                        ""});
-            table6.AddRow(new string[] {
-                        "",
-                        "0",
-                        ""});
-            table6.AddRow(new string[] {
-                        "",
-                        "",
-                        ""});
-#line 26
- testRunner.Then("the board should be:", ((string)(null)), table6);
+#line 20
+ testRunner.Then("the board should be:", ((string)(null)), table4);
 #line hidden
             this.ScenarioCleanup();
         }
@@ -181,53 +155,40 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void ShouldTrackMoveOrder()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Should track move order", ((string[])(null)));
-#line 31
+#line 25
 this.ScenarioSetup(scenarioInfo);
 #line hidden
-            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
                         "",
                         "x",
                         ""});
-            table7.AddRow(new string[] {
+            table5.AddRow(new string[] {
                         "",
                         "",
                         ""});
-            table7.AddRow(new string[] {
+            table5.AddRow(new string[] {
                         "",
                         "",
                         ""});
-#line 32
- testRunner.Given("board:", ((string)(null)), table7);
+#line 26
+ testRunner.Given("board:", ((string)(null)), table5);
+#line 30
+ testRunner.When("try to put a tic at {1, 1}");
 #line hidden
-            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         "",
                         "x",
                         ""});
-            table8.AddRow(new string[] {
-                        "",
-                        "x",
-                        ""});
-            table8.AddRow(new string[] {
+            table6.AddRow(new string[] {
                         "",
                         "",
                         ""});
-#line 36
- testRunner.When("try to update board with:", ((string)(null)), table8);
-#line hidden
-            TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
-                        "",
-                        "x",
-                        ""});
-            table9.AddRow(new string[] {
+            table6.AddRow(new string[] {
                         "",
                         "",
                         ""});
-            table9.AddRow(new string[] {
-                        "",
-                        "",
-                        ""});
-#line 40
- testRunner.Then("the board should be:", ((string)(null)), table9);
+#line 31
+ testRunner.Then("the board should be:", ((string)(null)), table6);
 #line hidden
             this.ScenarioCleanup();
         }

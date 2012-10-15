@@ -2,7 +2,7 @@ namespace TicTakToe
 {
     public class TickMove : GameMove
     {
-        public TickMove(int x, int y)
+        public TickMove(int x, int y) : base(x, y)
         {
             
         }
@@ -11,5 +11,10 @@ namespace TicTakToe
         {
             return "x";
         }
+
+	    public override void Execute()
+	    {
+		    throw new System.NotImplementedException();
+	    }
     }
 }

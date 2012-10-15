@@ -17,7 +17,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -55,13 +55,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BoardCell.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="GameMove.cs" />
     <Compile Include="MoveSafeNull.cs" />
     <Compile Include="IGameMove.cs" />
     <Compile Include="INullable.cs" />
     <Compile Include="SafeNull.cs" />
-    <Compile Include="TackedCell.cs" />
-    <Compile Include="TickedCell.cs" />
+    <Compile Include="TacMove.cs" />
+    <Compile Include="TickMove.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

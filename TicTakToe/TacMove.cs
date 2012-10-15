@@ -12,5 +12,10 @@ namespace TicTakToe
         {
             return "0";
         }
+
+	    public override void Execute()
+	    {
+		    throw new System.NotImplementedException();
+	    }
     }
 }

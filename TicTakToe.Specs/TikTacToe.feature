@@ -5,10 +5,7 @@ Scenario: Should not be able to replace tic with tak
     |   | x |   |
     |   |   |   |
     |   |   |   |
-	When try to update board with:
-    |   | 0 |   |
-    |   |   |   |
-    |   |   |   |
+	When try to put a tac at {0, 1}
 	Then the board should be:
     |   | x |   |
     |   |   |   |
@@ -19,10 +16,7 @@ Scenario: Should allow tac after tic
     |   | x |   |
     |   |   |   |
     |   |   |   |
-	When try to update board with:
-    |   | x |   |
-    |   | 0 |   |
-    |   |   |   |
+	When try to put a tac at {1, 1}
 	Then the board should be:
     |   | x |   |
     |   | 0 |   |
@@ -33,10 +27,7 @@ Scenario: Should track move order
     |   | x |   |
     |   |   |   |
     |   |   |   |
-	When try to update board with:
-    |   | x |   |
-    |   | x |   |
-    |   |   |   |
+	When try to put a tic at {1, 1}
 	Then the board should be:
     |   | x |   |
     |   |   |   |

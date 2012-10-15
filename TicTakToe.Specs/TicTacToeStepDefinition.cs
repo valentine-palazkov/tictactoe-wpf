@@ -1,4 +1,6 @@
-﻿using FluentAssertions.Assertions;
+﻿using System.Linq;
+using FluentAssertions;
+using FluentAssertions.Assertions;
 using TechTalk.SpecFlow;
 
 namespace TicTakToe.Specs
@@ -7,16 +9,21 @@ namespace TicTakToe.Specs
     public class TicTacToeStepDefinition
     {
         [Given(@"board:")]
-        public void GivenField(Table table)
+        public void GivenBoard(Table table)
         {
-            TicTacToeScenarioContext.Board = table.Rows.ToGameField();
+            var steps = table.Rows.ParseMoves();
+	        var board = new GameBoard();
+			TicTacToeScenarioContext.Board = board;
+	        var game = new Game(board);
+			game.Make(steps.ToArray());
+	        TicTacToeScenarioContext.Game = game;
         }
 
-
-        [When(@"try to update board with:")]
-        public void WhenTryToUpdateFieldWith(Table table)
+		[StepDefinition(@"try to put a tac at \{(.*), (.*)\}")]
+        public void WhenTryPutTacAt(int row, int column)
         {
-            table.Rows.Update(TicTacToeScenarioContext.Board);
+            var move = new TacMove(column, row);
+			TicTacToeScenarioContext.Game.Make(move);
         }
 
         [Then(@"the board should be:")]
