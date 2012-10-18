@@ -4,17 +4,11 @@ namespace TicTakToe
     {
         public TickMove(int x, int y) : base(x, y)
         {
-            
         }
 
-        public override string ToString()
+        public override string View
         {
-            return "x";
+            get { return "x"; }
         }
-
-	    public override void Execute()
-	    {
-		    throw new System.NotImplementedException();
-	    }
     }
 }

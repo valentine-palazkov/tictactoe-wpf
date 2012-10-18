@@ -12,24 +12,27 @@ namespace TicTakToe.Specs
         public void GivenBoard(Table table)
         {
             var steps = table.Rows.ParseMoves();
-	        var board = new GameBoard();
-			TicTacToeScenarioContext.Board = board;
-	        var game = new Game(board);
-			game.Make(steps.ToArray());
-	        TicTacToeScenarioContext.Game = game;
+            steps.Count().Should().Be(9);
+
+            var board = new GameBoard();
+            TicTacToeScenarioContext.Board = board;
+            var game = new Game(board);
+            game.Make(steps.ToArray());
+            TicTacToeScenarioContext.Game = game;
         }
 
-		[StepDefinition(@"try to put a tac at \{(.*), (.*)\}")]
+        [StepDefinition(@"try to put a tac at \{(.*), (.*)\}")]
         public void WhenTryPutTacAt(int row, int column)
         {
             var move = new TacMove(column, row);
-			TicTacToeScenarioContext.Game.Make(move);
+            TicTacToeScenarioContext.Game.Make(move);
         }
 
         [Then(@"the board should be:")]
         public void ThenTheResultShouldBe(Table table)
         {
-            TicTacToeScenarioContext.Board.Should().Match(table.Rows);
+            var steps = table.Rows.ParseMoves();
+            TicTacToeScenarioContext.Board.Should().Match(steps);
         }
     }
 }

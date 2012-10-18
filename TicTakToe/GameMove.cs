@@ -1,25 +1,41 @@
 namespace TicTakToe
 {
-	public abstract class GameMove : IGameMove
-	{
-		private readonly int _x;
-		private readonly int _y;
+    public abstract class GameMove : IGameMove
+    {
+        protected readonly int X;
+        protected readonly int Y;
 
-		protected GameMove(int x, int y)
-		{
-			_x = x;
-			_y = y;
-		}
+        protected GameMove(int x, int y)
+        {
+            X = x;
+            Y = y;
+        }
 
-		#region IGameMove Members
+        #region IGameMove Members
 
-		public bool IsNull
-		{
-			get { return false; }
-		}
+        public bool IsNull
+        {
+            get { return false; }
+        }
 
-		public abstract void Execute();
+        public bool AlreadyMadeOn(GameBoard board)
+        {
+            return board[X, Y] == this;
+        }
 
-		#endregion
-	}
+        public override string ToString()
+        {
+            return string.Format("'{0}' at ({1}, {2})", View, X, Y);
+        }
+
+        #endregion
+
+        public void Execute(GameBoard board)
+        {
+            board.MakeMove(this, X, Y);
+        }
+
+
+        public abstract string View { get; }
+    }
 }

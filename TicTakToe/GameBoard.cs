@@ -4,25 +4,23 @@ namespace TicTakToe
 {
     public class GameBoard
     {
-        private readonly List<List<IGameMove>> cells = new List<List<IGameMove>>();
+        private readonly List<List<IGameMove>> _cells = new List<List<IGameMove>>();
 
         public GameBoard()
         {
-            cells.Add(new List<IGameMove>
-                {MoveSafeNull.Instance, MoveSafeNull.Instance, MoveSafeNull.Instance});
-            cells.Add(new List<IGameMove>
-                {MoveSafeNull.Instance, MoveSafeNull.Instance, MoveSafeNull.Instance});
-            cells.Add(new List<IGameMove>
-                {MoveSafeNull.Instance, MoveSafeNull.Instance, MoveSafeNull.Instance});
+            _cells.Add(new List<IGameMove> { MoveSafeNull.Instance, MoveSafeNull.Instance, MoveSafeNull.Instance });
+            _cells.Add(new List<IGameMove> { MoveSafeNull.Instance, MoveSafeNull.Instance, MoveSafeNull.Instance });
+            _cells.Add(new List<IGameMove> { MoveSafeNull.Instance, MoveSafeNull.Instance, MoveSafeNull.Instance });
         }
 
-        public IGameMove this[int x, int y]
+        public IGameMove this[int column, int row]
         {
-            get { return cells[y][x]; }
+            get { return _cells[row][column]; }
         }
 
-        public void Move(int x, int y)
+        public void MakeMove(IGameMove move, int column, int row)
         {
+            _cells[row][column] = move;
         }
     }
 }

@@ -12,8 +12,18 @@ namespace TicTakToe
             get { return true; }
         }
 
-        public void Execute()
+        public void Execute(GameBoard board)
         {
+        }
+
+        public bool AlreadyMadeOn(GameBoard board)
+        {
+            return true;
+        }
+
+        public string View
+        {
+            get { return " "; }
         }
     }
 }
