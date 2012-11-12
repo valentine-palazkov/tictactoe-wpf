@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using FluentAssertions.Assertions;
+using FluentAssertions.Primitives;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
 
