@@ -4,6 +4,7 @@ namespace TicTakToe
     {
         void Execute(GameBoard board);
         bool AlreadyMadeOn(GameBoard board);
-        string View { get; }
+        int Column { get; }
+        int Row { get; }
     }
 }

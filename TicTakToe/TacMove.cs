@@ -2,12 +2,12 @@ namespace TicTakToe
 {
     public class TacMove : GameMove
     {
-        public TacMove(int x, int y)
-            : base(x, y)
+        public TacMove(int column, int row)
+            : base(column, row)
         {
         }
 
-        public override string View
+        protected override string View
         {
             get { return "0"; }
         }

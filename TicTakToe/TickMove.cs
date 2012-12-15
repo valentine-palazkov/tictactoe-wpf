@@ -2,11 +2,11 @@ namespace TicTakToe
 {
     public class TickMove : GameMove
     {
-        public TickMove(int x, int y) : base(x, y)
+        public TickMove(int column, int row) : base(column, row)
         {
         }
 
-        public override string View
+        protected override string View
         {
             get { return "x"; }
         }

@@ -1,6 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
 using FluentAssertions.Assertions;
-using FluentAssertions;
 using TechTalk.SpecFlow;
 
 namespace TicTakToe.Specs
@@ -8,31 +7,41 @@ namespace TicTakToe.Specs
     [Binding]
     public class TicTacToeStepDefinition
     {
-        [Given(@"board:")]
-        public void GivenBoard(Table table)
+        [BeforeScenario("EmptyBoard")]
+        public void EmptyBoard()
         {
-            var steps = table.Rows.ParseMoves();
-	        steps.Count().Should();
-            //steps.Count().Should().Be(9);
-
             var board = new GameBoard();
             TicTacToeScenarioContext.Board = board;
+
             var game = new Game(board);
-            game.Make(steps.ToArray());
             TicTacToeScenarioContext.Game = game;
         }
 
-        [StepDefinition(@"try to put a tac at \{(.*), (.*)\}")]
-        public void WhenTryPutTacAt(int row, int column)
+        [Given(@"gamer puts '(.*)' at \{(.*), (.*)}")]
+        [When(@"gamer tries to put '(.*)' at \{(.*), (.*)}")]
+        public void WhenTryToPutAt(char moveType, int row, int column)
         {
-            var move = new TacMove(column, row);
+            IGameMove move;
+            switch (moveType)
+            {
+                case 'x':
+                    move = new TickMove(row, column);
+                    break;
+                case '0':
+                    move = new TacMove(row, column);
+                    break;
+                default:
+                    move = new NoMove(row, column);
+                    break;
+            }
+
             TicTacToeScenarioContext.Game.Make(move);
         }
 
         [Then(@"the board should be:")]
         public void ThenTheResultShouldBe(Table table)
         {
-            var steps = table.Rows.ParseMoves();
+            IEnumerable<IGameMove> steps = table.ParseMoves();
             TicTacToeScenarioContext.Board.Should().Match(steps);
         }
     }

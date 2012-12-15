@@ -1,26 +1,35 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace TicTakToe
 {
     public class GameBoard
     {
-        private readonly List<List<IGameMove>> _cells = new List<List<IGameMove>>();
+        private readonly List<Cell> _cells = new List<Cell>();
 
         public GameBoard()
         {
-            _cells.Add(new List<IGameMove> { MoveSafeNull.Instance, MoveSafeNull.Instance, MoveSafeNull.Instance });
-            _cells.Add(new List<IGameMove> { MoveSafeNull.Instance, MoveSafeNull.Instance, MoveSafeNull.Instance });
-            _cells.Add(new List<IGameMove> { MoveSafeNull.Instance, MoveSafeNull.Instance, MoveSafeNull.Instance });
+            for (int y = 0; y < 3; y++)
+            {
+                for (int x = 0; x < 3; x++)
+                {
+                    _cells.Add(new Cell(y, x));
+                }
+            }
         }
 
-        public IGameMove this[int column, int row]
+        public Cell this[int row, int column]
         {
-            get { return _cells[row][column]; }
+            get
+            {
+                return
+                    (from cell in _cells where cell.Move.Column == column && cell.Move.Row == row select cell).Single();
+            }
         }
 
-        public void MakeMove(IGameMove move, int column, int row)
+        public void MakeMove(IGameMove move)
         {
-            _cells[row][column] = move;
+            this[move.Row, move.Column].Accept(move);
         }
     }
 }

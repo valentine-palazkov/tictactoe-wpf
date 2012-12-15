@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using FluentAssertions.Assertions;
 using FluentAssertions.Primitives;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
@@ -17,7 +16,7 @@ namespace TicTakToe.Specs
 
         public void Match(IEnumerable<IGameMove> moves)
         {
-            foreach (var move in moves)
+            foreach (IGameMove move in moves)
             {
                 Assert.That(move.AlreadyMadeOn(_board), Is.True, "Move {0} is not done", move);
             }

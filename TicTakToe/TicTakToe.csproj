@@ -55,9 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Cell.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameMove.cs" />
-    <Compile Include="MoveSafeNull.cs" />
+    <Compile Include="NoMove.cs" />
     <Compile Include="IGameMove.cs" />
     <Compile Include="INullable.cs" />
     <Compile Include="SafeNull.cs" />

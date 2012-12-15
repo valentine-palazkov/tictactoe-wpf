@@ -5,21 +5,23 @@ namespace TicTakToe
 {
     public class Game
     {
-        private readonly GameBoard board;
-        private readonly List<IGameMove> moves = new List<IGameMove>();
+        private readonly GameBoard _board;
+        private readonly List<IGameMove> _moves = new List<IGameMove>();
 
         public Game(GameBoard board)
         {
-            this.board = board;
+            _board = board;
         }
 
-        public void Make(params IGameMove[] gameMoves)
+        public void Make(IGameMove move)
         {
-            gameMoves.ToList().ForEach(move =>
-                {
-                    move.Execute(board);
-                    moves.Add(move);
-                });
+            move.Execute(_board);
+            _moves.Add(move);
+        }
+
+        public void Make(IEnumerable<IGameMove> gameMoves)
+        {
+            gameMoves.ToList().ForEach(Make);
         }
     }
 }

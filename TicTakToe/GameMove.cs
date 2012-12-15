@@ -2,13 +2,10 @@ namespace TicTakToe
 {
     public abstract class GameMove : IGameMove
     {
-        protected readonly int X;
-        protected readonly int Y;
-
-        protected GameMove(int x, int y)
+        protected GameMove(int column, int row)
         {
-            X = x;
-            Y = y;
+            Column = column;
+            Row = row;
         }
 
         #region IGameMove Members
@@ -20,22 +17,25 @@ namespace TicTakToe
 
         public bool AlreadyMadeOn(GameBoard board)
         {
-            return board[X, Y] == this;
+            Cell cell = board[Row, Column];
+            return cell.Move.GetType() == GetType();
         }
+
+        public int Column { get; private set; }
+        public int Row { get; private set; }
 
         public override string ToString()
         {
-            return string.Format("'{0}' at ({1}, {2})", View, X, Y);
+            return string.Format("'{0}' at ({1}, {2})", View, Column, Row);
         }
 
         #endregion
 
+        protected abstract string View { get; }
+
         public void Execute(GameBoard board)
         {
-            board.MakeMove(this, X, Y);
+            board.MakeMove(this);
         }
-
-
-        public abstract string View { get; }
     }
 }
