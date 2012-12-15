@@ -102,11 +102,17 @@ this.ScenarioSetup(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Should allow tac after tic")]
+        [NUnit.Framework.CategoryAttribute("EmptyBoard")]
         public virtual void ShouldAllowTacAfterTic()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Should allow tac after tic", ((string[])(null)));
-#line 13
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Should allow tac after tic", new string[] {
+                        "EmptyBoard"});
+#line 14
 this.ScenarioSetup(scenarioInfo);
+#line 15
+ testRunner.Given("gamer puts \'x\' at {0, 1}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 16
+ testRunner.When("gamer tries to put \'0\' at {1, 1}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "column1",
@@ -118,16 +124,31 @@ this.ScenarioSetup(scenarioInfo);
                         ""});
             table2.AddRow(new string[] {
                         "",
-                        "",
+                        "0",
                         ""});
             table2.AddRow(new string[] {
                         "",
                         "",
                         ""});
-#line 14
- testRunner.Given("board:", ((string)(null)), table2, "Given ");
-#line 19
- testRunner.When("try to put a \'0\' at {1, 1}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 17
+ testRunner.Then("the board should be:", ((string)(null)), table2, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Should track move order")]
+        [NUnit.Framework.CategoryAttribute("EmptyBoard")]
+        public virtual void ShouldTrackMoveOrder()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Should track move order", new string[] {
+                        "EmptyBoard"});
+#line 24
+this.ScenarioSetup(scenarioInfo);
+#line 25
+ testRunner.Given("gamer puts \'x\' at {0, 1}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 26
+ testRunner.When("gamer tries to put \'x\' at {1, 1}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "column1",
@@ -139,65 +160,14 @@ this.ScenarioSetup(scenarioInfo);
                         ""});
             table3.AddRow(new string[] {
                         "",
-                        "0",
+                        "",
                         ""});
             table3.AddRow(new string[] {
                         "",
                         "",
                         ""});
-#line 20
- testRunner.Then("the board should be:", ((string)(null)), table3, "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Should track move order")]
-        public virtual void ShouldTrackMoveOrder()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Should track move order", ((string[])(null)));
-#line 26
-this.ScenarioSetup(scenarioInfo);
-#line hidden
-            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
-                        "column1",
-                        "column2",
-                        "column3"});
-            table4.AddRow(new string[] {
-                        "",
-                        "x",
-                        ""});
-            table4.AddRow(new string[] {
-                        "",
-                        "",
-                        ""});
-            table4.AddRow(new string[] {
-                        "",
-                        "",
-                        ""});
 #line 27
- testRunner.Given("board:", ((string)(null)), table4, "Given ");
-#line 32
- testRunner.When("try to put a \'x\' at {1, 1}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
-                        "column1",
-                        "column2",
-                        "column3"});
-            table5.AddRow(new string[] {
-                        "",
-                        "x",
-                        ""});
-            table5.AddRow(new string[] {
-                        "",
-                        "",
-                        ""});
-            table5.AddRow(new string[] {
-                        "",
-                        "",
-                        ""});
-#line 33
- testRunner.Then("the board should be:", ((string)(null)), table5, "Then ");
+ testRunner.Then("the board should be:", ((string)(null)), table3, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
