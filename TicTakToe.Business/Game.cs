@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TicTakToe
+namespace TicTakToe.Business
 {
     public class Game
     {

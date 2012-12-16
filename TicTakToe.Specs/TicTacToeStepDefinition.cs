@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using FluentAssertions.Assertions;
 using TechTalk.SpecFlow;
+using TicTakToe.Business;
 
 namespace TicTakToe.Specs
 {
@@ -21,20 +22,7 @@ namespace TicTakToe.Specs
         [When(@"gamer tries to put '(.*)' at \{(.*), (.*)}")]
         public void WhenTryToPutAt(char moveType, int row, int column)
         {
-            IGameMove move;
-            switch (moveType)
-            {
-                case 'x':
-                    move = new TickMove(row, column);
-                    break;
-                case '0':
-                    move = new TacMove(row, column);
-                    break;
-                default:
-                    move = new NoMove(row, column);
-                    break;
-            }
-
+            IGameMove move = moveType.ParseStep(row, column);
             TicTacToeScenarioContext.Game.Make(move);
         }
 

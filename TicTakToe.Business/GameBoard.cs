@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TicTakToe
+namespace TicTakToe.Business
 {
     public class GameBoard
     {
@@ -18,7 +18,7 @@ namespace TicTakToe
             }
         }
 
-        public Cell this[int row, int column]
+        public Cell this[Row row, Column column]
         {
             get
             {

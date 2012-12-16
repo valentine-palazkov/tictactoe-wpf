@@ -1,8 +1,8 @@
-namespace TicTakToe
+namespace TicTakToe.Business
 {
     public abstract class GameMove : IGameMove
     {
-        protected GameMove(int column, int row)
+        protected GameMove(Row row, Column column)
         {
             Column = column;
             Row = row;
@@ -10,28 +10,23 @@ namespace TicTakToe
 
         #region IGameMove Members
 
-        public bool IsNull
-        {
-            get { return false; }
-        }
-
         public bool AlreadyMadeOn(GameBoard board)
         {
             Cell cell = board[Row, Column];
             return cell.Move.GetType() == GetType();
         }
 
-        public int Column { get; private set; }
-        public int Row { get; private set; }
+        public Column Column { get; private set; }
+        public Row Row { get; private set; }
 
         public override string ToString()
         {
-            return string.Format("'{0}' at ({1}, {2})", View, Column, Row);
+            return string.Format("'{0}' at ({1}, {2})", Name, Row, Column);
         }
 
         #endregion
 
-        protected abstract string View { get; }
+        protected abstract string Name { get; }
 
         public void Execute(GameBoard board)
         {

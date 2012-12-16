@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using FluentAssertions.Primitives;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
+using TicTakToe.Business;
 
 namespace TicTakToe.Specs
 {

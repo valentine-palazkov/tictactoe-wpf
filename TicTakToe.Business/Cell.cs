@@ -1,6 +1,6 @@
 using System;
 
-namespace TicTakToe
+namespace TicTakToe.Business
 {
     public class Cell
     {

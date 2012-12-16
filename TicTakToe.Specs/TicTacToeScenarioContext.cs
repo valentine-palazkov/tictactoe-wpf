@@ -1,4 +1,5 @@
 using TechTalk.SpecFlow;
+using TicTakToe.Business;
 
 namespace TicTakToe.Specs
 {
@@ -20,7 +21,7 @@ namespace TicTakToe.Specs
 
         public static GameBoard Board
         {
-            get { return (GameBoard) Current[GameBoardKey]; }
+            get { return Current.Get<GameBoard>(GameBoardKey); }
             set { Current[GameBoardKey] = value; }
         }
     }

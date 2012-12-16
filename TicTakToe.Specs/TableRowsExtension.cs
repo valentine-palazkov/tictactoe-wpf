@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TechTalk.SpecFlow;
+using TicTakToe.Business;
 
 namespace TicTakToe.Specs
 {
@@ -9,28 +10,28 @@ namespace TicTakToe.Specs
         public static IEnumerable<IGameMove> ParseMoves(this Table theRows)
         {
             var moves = new List<IGameMove>();
-            for (int y = 0; y < theRows.Rows.Count; y++)
+            for (int rowIndex = 0; rowIndex < theRows.Rows.Count; rowIndex++)
             {
-                string[] row = theRows.Rows[y].Values.ToArray();
-                for (int x = 0; x < row.Length; x++)
+                string[] row = theRows.Rows[rowIndex].Values.ToArray();
+                for (int columnIndex = 0; columnIndex < row.Length; columnIndex++)
                 {
-                    moves.Add(ParseStep(row[x], x, y));
+                    moves.Add(ParseStep(row[columnIndex].ToCharArray().FirstOrDefault(), rowIndex, columnIndex));
                 }
             }
 
             return moves;
         }
 
-        private static IGameMove ParseStep(string cellChar, int x, int y)
+        public static IGameMove ParseStep(this char cellChar, Row row, Column column)
         {
-            switch (cellChar.ToLower())
+            switch (char.ToLower(cellChar))
             {
-                case "x":
-                    return new TickMove(y, x);
-                case "0":
-                    return new TacMove(y, x);
+                case 'x':
+                    return new TicMove(row, column);
+                case '0':
+                    return new TacMove(row, column);
                 default:
-                    return new NoMove(y, x);
+                    return new NoMove(row, column);
             }
         }
     }

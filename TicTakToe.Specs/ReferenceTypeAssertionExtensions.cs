@@ -1,4 +1,5 @@
 using TicTakToe;
+using TicTakToe.Business;
 using TicTakToe.Specs;
 
 // ReSharper disable CheckNamespace
