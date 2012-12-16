@@ -5,13 +5,10 @@ namespace TicTakToe.Specs
 {
     public class TicTacToeScenarioContext
     {
-        private const string GameBoardKey = "GameBoard";
-        private const string GameKey = "Game";
-
         public static Game Game
         {
-            get { return Current.Get<Game>(GameKey); }
-            set { Current[GameKey] = value; }
+            get { return Current.Get<Game>(); }
+            set { Current.Set(value); }
         }
 
         private static ScenarioContext Current
@@ -21,8 +18,8 @@ namespace TicTakToe.Specs
 
         public static GameBoard Board
         {
-            get { return Current.Get<GameBoard>(GameBoardKey); }
-            set { Current[GameBoardKey] = value; }
+            get { return Current.Get<GameBoard>(); }
+            set { Current.Set(value); }
         }
     }
 }

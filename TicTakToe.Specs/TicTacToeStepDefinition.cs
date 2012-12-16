@@ -18,13 +18,28 @@ namespace TicTakToe.Specs
             TicTacToeScenarioContext.Game = game;
         }
 
-        [Given(@"gamer puts '(.*)' at \{(.*), (.*)}")]
         [When(@"gamer tries to put '(.*)' at \{(.*), (.*)}")]
         public void WhenTryToPutAt(char moveType, int row, int column)
+        {
+            try
+            {
+                WhenPutAt(moveType, row, column);
+            }
+            catch
+            {
+                
+            }
+            
+        }
+
+        [Given(@"gamer puts '(.*)' at \{(.*), (.*)}")]
+        public void WhenPutAt(char moveType, int row, int column)
         {
             IGameMove move = moveType.ParseStep(row, column);
             TicTacToeScenarioContext.Game.Make(move);
         }
+
+
 
         [Then(@"the board should be:")]
         public void ThenTheResultShouldBe(Table table)
