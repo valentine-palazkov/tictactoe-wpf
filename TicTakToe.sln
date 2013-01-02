@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{BB414D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTakToe.Business", "TicTakToe.Business\TicTakToe.Business.csproj", "{F55DDA66-489D-4297-8EBA-1D6B55AAEE30}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTakToe.WinForms", "TicTakToe.WinForms\TicTakToe.WinForms.csproj", "{DE6BEDA6-B786-45CD-BFAD-EF4391BE254E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,16 @@ Global
 		{F55DDA66-489D-4297-8EBA-1D6B55AAEE30}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{F55DDA66-489D-4297-8EBA-1D6B55AAEE30}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{F55DDA66-489D-4297-8EBA-1D6B55AAEE30}.Release|x86.ActiveCfg = Release|Any CPU
+		{DE6BEDA6-B786-45CD-BFAD-EF4391BE254E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE6BEDA6-B786-45CD-BFAD-EF4391BE254E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE6BEDA6-B786-45CD-BFAD-EF4391BE254E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{DE6BEDA6-B786-45CD-BFAD-EF4391BE254E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{DE6BEDA6-B786-45CD-BFAD-EF4391BE254E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DE6BEDA6-B786-45CD-BFAD-EF4391BE254E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE6BEDA6-B786-45CD-BFAD-EF4391BE254E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE6BEDA6-B786-45CD-BFAD-EF4391BE254E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{DE6BEDA6-B786-45CD-BFAD-EF4391BE254E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{DE6BEDA6-B786-45CD-BFAD-EF4391BE254E}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
