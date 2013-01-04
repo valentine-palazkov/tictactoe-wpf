@@ -1,30 +1,84 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using Rhino.ServiceBus;
-using StructureMap;
 
 namespace TicTakToe.WinForms
 {
-    public partial class MoveButton : UserControl
-    {
-        public MoveButton()
-        {
-            InitializeComponent();
-        }
+	public partial class MoveButton : UserControl, OccasionalConsumerOf<TicMoveMadeMessage>, OccasionalConsumerOf<TakMoveMadeMessage>
+	{
+		private readonly IServiceBus _bus;
 
-        public int Row { get; set; }
-        public int Column { get; set; }
+		public MoveButton(IServiceBus bus)
+		{
+			_bus = bus;
+			_bus.AddInstanceSubscription(this);
+			InitializeComponent();
+		}
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ObjectFactory.GetInstance<IServiceBus>().Publish(new UserWantsToMoveMessage {Row = Row, Column = Column,});
-        }
-    }
+		public int Row { get; set; }
+		public int Column { get; set; }
 
-    public class UserWantsToMoveMessage
-    {
-        public int Column { get; set; }
+		public override string Text
+		{
+			get { return button1.Text; }
+			set { button1.Text = value; }
+		}
 
-        public int Row { get; set; }
-    }
+		private void button1_Click(object sender, EventArgs e)
+		{
+			_bus.Publish(new UserWantsToMoveMessage {Row = Row, Column = Column,});
+		}
+
+		private delegate void TicConsumerDelegate(TicMoveMadeMessage message);
+
+		private delegate void TakConsumerDelegate(TakMoveMadeMessage message);
+
+		public void Consume(TicMoveMadeMessage message)
+		{
+			if (InvokeRequired)
+			{
+				Invoke(new TicConsumerDelegate(Consume), message);
+				return;
+			}
+
+			if (message.Row == Row && message.Column == Column)
+			{
+				button1.Text = "Tic";
+			}
+		}
+
+		public void Consume(TakMoveMadeMessage message)
+		{
+			if (InvokeRequired)
+			{
+				Invoke(new TakConsumerDelegate(Consume), message);
+				return;
+			}
+
+			if (message.Row == Row && message.Column == Column)
+			{
+
+				button1.Text = "Tak";
+			}
+		}
+	}
+
+	public class TakMoveMadeMessage : GameMoveMessage
+	{
+	}
+
+	public class GameMoveMessage
+	{
+		public int Column { get; set; }
+		public int Row { get; set; }
+	}
+
+	public class TicMoveMadeMessage : GameMoveMessage
+	{
+	}
+
+	public class UserWantsToMoveMessage : GameMoveMessage
+	{
+	}
 }

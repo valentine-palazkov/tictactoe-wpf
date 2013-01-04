@@ -30,3 +30,12 @@ Scenario: Should track move order
     |   |   |   |
     |   |   |   |
 
+@EmptyBoard
+Scenario: Should decide what move is next
+	Given gamer makes a move at {0, 1}
+	When gamer makes a move at {1, 1}
+	Then the board should be:
+	| column1 | column2 | column3 |
+    |   | x |   |
+    |   | 0 |   |
+    |   |   |   |

@@ -39,7 +39,11 @@ namespace TicTakToe.Specs
             TicTacToeScenarioContext.Game.Make(move);
         }
 
-
+		[StepDefinition(@"gamer makes a move at \{(.*), (.*)}")]
+		public void GivenGamerMakesAMoveAt(int row, int column)
+		{
+			TicTacToeScenarioContext.Game.Make(row, column);
+		}
 
         [Then(@"the board should be:")]
         public void ThenTheResultShouldBe(Table table)
