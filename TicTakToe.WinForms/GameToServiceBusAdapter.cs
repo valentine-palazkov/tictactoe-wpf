@@ -16,15 +16,22 @@ namespace TicTakToe.WinForms
 
 		public void Consume(UserWantsToMoveMessage message)
 		{
-			var move = _game.Make(message.Row, message.Column);
-			if (move.GetType() == typeof (TicMove))
-			{
-				_bus.Send(new TicMoveMadeMessage {Row = message.Row, Column = message.Column});
-			}
-			else
-			{
-				_bus.Send(new TakMoveMadeMessage { Row = message.Row, Column = message.Column });
-			}
+            try
+            {
+                var move = _game.Make(message.Row, message.Column);
+                if (move.GetType() == typeof (TicMove))
+                {
+                    _bus.Send(new TicMoveMadeMessage {Row = message.Row, Column = message.Column});
+                }
+                else
+                {
+                    _bus.Send(new TakMoveMadeMessage {Row = message.Row, Column = message.Column});
+                }
+            }
+            catch
+            {
+                
+            }
 			
 		}
 	}

@@ -21,5 +21,11 @@ namespace TicTakToe.Specs
             get { return Current.Get<GameBoard>(); }
             set { Current.Set(value); }
         }
+
+        public static RuleViolationException RuleViolationException
+        {
+            get { return Current.Get<RuleViolationException>(); }
+            set { Current.Set(value); }
+        }
     }
 }

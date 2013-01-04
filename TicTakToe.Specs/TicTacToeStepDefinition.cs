@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using FluentAssertions;
 using FluentAssertions.Assertions;
 using TechTalk.SpecFlow;
 using TicTakToe.Business;
@@ -24,6 +26,10 @@ namespace TicTakToe.Specs
             try
             {
                 WhenPutAt(moveType, row, column);
+            }
+            catch (RuleViolationException e)
+            {
+                TicTacToeScenarioContext.RuleViolationException = e;
             }
             catch
             {
@@ -51,5 +57,14 @@ namespace TicTakToe.Specs
             IEnumerable<IGameMove> steps = table.ParseMoves();
             TicTacToeScenarioContext.Board.Should().Match(steps);
         }
+
+
+        [Then(@"rule violated should be '(.*)'")]
+        public void ThenRuleViolatedShouldBe(string p0)
+        {
+            TicTacToeScenarioContext.RuleViolationException.Message.TrimEnd('\r', '\n') .Should()
+                                    .Be("Can not make move at {0, 1} as this move already made");
+        }
+
     }
 }

@@ -34,10 +34,10 @@ namespace TicTakToe.Business
 
 		public void Make(IGameMove move)
 		{
-			MoveValidationResult result = _rules.Validate(move);
-			if (!result.IsMoveOk)
+            var result = _rules.Validate(move);
+            if (result.Any())
 			{
-				throw new RuleViolationException(result.Message);
+				throw new RuleViolationException(result);
 			}
 
 			move.Execute(_board);

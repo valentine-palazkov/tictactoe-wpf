@@ -3,35 +3,56 @@ using System.Linq;
 
 namespace TicTakToe.Business
 {
-	internal class TickTackToeRules
-	{
-		private readonly IEnumerable<IGameMove> _moves;
-		private readonly GameBoard _board;
+    internal class TickTackToeRules
+    {
+        private readonly GameBoard _board;
+        private readonly IEnumerable<IGameMove> _moves;
 
-		public TickTackToeRules(IEnumerable<IGameMove> moves, GameBoard board)
-		{
-			_moves = moves;
-			_board = board;
-		}
+        public TickTackToeRules(IEnumerable<IGameMove> moves, GameBoard board)
+        {
+            _moves = moves;
+            _board = board;
+        }
 
-		public MoveValidationResult Validate(IGameMove move)
-		{
-			var lastMove = _moves.LastOrDefault();
+        public IEnumerable<RuleViolation> Validate(IGameMove move)
+        {
+            var validationResult = new List<RuleViolation>();
+            ValidateMoveOrder(move, validationResult);
+            ValidateTheSameMove(move, validationResult);
+            return validationResult;
+        }
 
-			if (lastMove == null || lastMove.GetType() != move.GetType())
-			{
-				return new MoveValidationResult
-					{
-						IsMoveOk = true,
-						Message = string.Format("Move '{0}' is OK", move)
-					};
-			}
+        private void ValidateTheSameMove(IGameMove move, List<RuleViolation> validationResult)
+        {
+            if (_board[move.Row, move.Column].Move.GetType() != typeof(NoMove))
+            {
+                validationResult.Add(new TheSameMoveShouldNotBeMadeAgainRuleValidation(move));
+            }
+        }
 
-			return new MoveValidationResult
-				{
-					IsMoveOk = false,
-					Message = string.Format("Move '{0}' is not OK because the previous move was the same", move)
-				};
-		}
-	}
+        private void ValidateMoveOrder(IGameMove move, List<RuleViolation> validationResult)
+        {
+            IGameMove lastMove = _moves.LastOrDefault();
+
+            if (lastMove != null && lastMove.GetType() == move.GetType())
+            {
+                validationResult.Add(new MoveOrderRuleViolation(move));
+            }
+        }
+    }
+
+    public class TheSameMoveShouldNotBeMadeAgainRuleValidation : RuleViolation
+    {
+        private readonly IGameMove _move;
+
+        public TheSameMoveShouldNotBeMadeAgainRuleValidation(IGameMove move)
+        {
+            _move = move;
+        }
+
+        public override string Message
+        {
+            get { return string.Format("Can not make move at {{{0}, {1}}} as this move already made", _move.Row, _move.Column); }
+        }
+    }
 }

@@ -9,6 +9,7 @@ Scenario: Should not be able to replace tic with tak
 	|   | x |   |
 	|   |   |   |
 	|   |   |   |
+		And rule violated should be 'Can not make move at {0, 1} as this move already made'
 
 @EmptyBoard
 Scenario: Should allow tac after tic
@@ -36,6 +37,10 @@ Scenario: Should decide what move is next
 	When gamer makes a move at {1, 1}
 	Then the board should be:
 	| column1 | column2 | column3 |
-	|   | x |   |
-	|   | 0 |   |
-	|   |   |   |
+    |   | x |   |
+    |   | 0 |   |
+    |   |   |   |
+
+Scenario: Filled game field should complete the game
+
+Scenario: Filled line should complete the game
