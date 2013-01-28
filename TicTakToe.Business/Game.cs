@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -15,7 +16,36 @@ namespace TicTakToe.Business
 			_rules = new TickTackToeRules(_moves, board);
 		}
 
-		public IGameMove Make(Row row, Column column)
+	    public bool IsCompleted
+	    {
+	        get
+	        {
+	            Type moveType0 = _board[0, 0].Move.GetType();
+                if (moveType0 != typeof (NoMove))
+                {
+                    Type moveType1 = _board[0, 1].Move.GetType();
+                    Type moveType2 = _board[0, 2].Move.GetType();
+                    if ((moveType0 == moveType1) && (moveType1 == moveType2))
+                        return true;
+
+                    moveType1 = _board[1, 1].Move.GetType();
+                    moveType2 = _board[2, 2].Move.GetType();
+
+                    if ((moveType0 == moveType1) && (moveType1 == moveType2))
+                        return true;
+
+                    moveType1 = _board[0, 1].Move.GetType();
+                    moveType2 = _board[0, 2].Move.GetType();
+
+                    if ((moveType0 == moveType1) && (moveType1 == moveType2))
+                        return true;
+                }
+
+                return false;
+	        }
+	    }
+
+	    public IGameMove Make(Row row, Column column)
 		{
 			var move = _moves.LastOrDefault();
 			if (move == null || move.GetType() == typeof (TacMove))

@@ -38,7 +38,7 @@ namespace TicTakToe.Specs
             
         }
 
-        [Given(@"gamer puts '(.*)' at \{(.*), (.*)}")]
+        [StepDefinition(@"gamer puts '(.*)' at \{(.*), (.*)}")]
         public void WhenPutAt(char moveType, int row, int column)
         {
             IGameMove move = moveType.ParseStep(row, column);
@@ -64,6 +64,12 @@ namespace TicTakToe.Specs
         {
             TicTacToeScenarioContext.RuleViolationException.Message.TrimEnd('\r', '\n') .Should()
                                     .Be("Can not make move at {0, 1} as this move already made");
+        }
+
+        [Then(@"the game completed")]
+        public void ThenTheGameCompleted()
+        {
+            TicTacToeScenarioContext.Game.IsCompleted.Should().Be(true);
         }
 
     }
