@@ -39,6 +39,15 @@ namespace TicTakToe.Business
             return !(arg0 == arg1);
         }
 
+        public static Row operator -(Row arg0, Row arg1)
+        {
+            return arg0.Value - arg1.Value;
+        }
+
+        public static Row operator +(Row arg0, Row arg1)
+        {
+            return arg0.Value + arg1.Value;
+        }
         public override string ToString()
         {
             return Value.ToString(CultureInfo.InvariantCulture);

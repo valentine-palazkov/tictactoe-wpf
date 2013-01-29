@@ -2,26 +2,22 @@ using System;
 
 namespace TicTakToe.Business
 {
-    public class Cell
+    public class Cell : ICell
     {
         private Action<IGameMove> AcceptNewMove;
-        private IGameMove _move;
 
         public Cell(int row, int column)
         {
-            _move = new NoMove(row, column);
+            Move = new NoMove(row, column);
 
             AcceptNewMove = delegate(IGameMove move)
                 {
-                    _move = move;
+                    Move = move;
                     AcceptNewMove = gameMove => { };
                 };
         }
 
-        public IGameMove Move
-        {
-            get { return _move; }
-        }
+        public IGameMove Move { get; private set; }
 
         public void Accept(IGameMove move)
         {

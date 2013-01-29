@@ -211,11 +211,11 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Filled line should complete the game")]
+        [NUnit.Framework.DescriptionAttribute("Filled diagonal line should complete the game")]
         [NUnit.Framework.CategoryAttribute("EmptyBoard")]
-        public virtual void FilledLineShouldCompleteTheGame()
+        public virtual void FilledDiagonalLineShouldCompleteTheGame()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Filled line should complete the game", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Filled diagonal line should complete the game", new string[] {
                         "EmptyBoard"});
 #line 45
 this.ScenarioSetup(scenarioInfo);

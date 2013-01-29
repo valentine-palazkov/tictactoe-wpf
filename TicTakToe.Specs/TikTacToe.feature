@@ -5,10 +5,10 @@ Scenario: Should not be able to replace tic with tak
 	Given gamer puts 'x' at {0, 1}
 	When gamer tries to put '0' at {0, 1}
 	Then the board should be:
-	|column1|column2|column3|
-	|   | x |   |
-	|   |   |   |
-	|   |   |   |
+	| column1 | column2 | column3 |
+	|         | x       |         |
+	|         |         |         |
+	|         |         |         |
 		And rule violated should be 'Can not make move at {0, 1} as this move already made'
 
 @EmptyBoard
@@ -16,20 +16,20 @@ Scenario: Should allow tac after tic
 	Given gamer puts 'x' at {0, 1}
 	When gamer tries to put '0' at {1, 1}
 	Then the board should be:
-	|column1|column2|column3|
-	|   | x |   |
-	|   | 0 |   |
-	|   |   |   |
+	| column1 | column2 | column3 |
+	|         | x       |         |
+	|         | 0       |         |
+	|         |         |         |
 
 @EmptyBoard
 Scenario: Should track move order
 	Given gamer puts 'x' at {0, 1}
 	When gamer tries to put 'x' at {1, 1}
 	Then the board should be:
-	|column1|column2|column3|
-	|   | x |   |
-	|   |   |   |
-	|   |   |   |
+	| column1 | column2 | column3 |
+	|         | x       |         |
+	|         |         |         |
+	|         |         |         |
 
 @EmptyBoard
 Scenario: Should decide what move is next
@@ -37,12 +37,12 @@ Scenario: Should decide what move is next
 	When gamer makes a move at {1, 1}
 	Then the board should be:
 	| column1 | column2 | column3 |
-    |   | x |   |
-    |   | 0 |   |
-    |   |   |   |
+	|         | x       |         |
+	|         | 0       |         |
+	|         |         |         |
 
 @EmptyBoard
-Scenario: Filled line should complete the game
+Scenario: Filled diagonal line should complete the game
 	Given gamer puts 'x' at {0, 0}
 		And gamer puts '0' at {0, 1}
 		And gamer puts 'x' at {0, 2}
@@ -53,3 +53,4 @@ Scenario: Filled line should complete the game
 		And gamer puts '0' at {2, 1}
 	When gamer puts 'x' at {2, 2}
 	Then the game completed
+

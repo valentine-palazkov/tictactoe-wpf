@@ -1,82 +1,96 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace TicTakToe.Business
 {
-	public class Game
-	{
-		private readonly GameBoard _board;
-		private readonly List<IGameMove> _moves = new List<IGameMove>();
-		private readonly TickTackToeRules _rules;
+    public class Game
+    {
+        private readonly GameBoard _board;
+        private readonly List<IGameMove> _moves = new List<IGameMove>();
+        private readonly TickTackToeRules _rules;
 
-		public Game(GameBoard board)
-		{
-			_board = board;
-			_rules = new TickTackToeRules(_moves, board);
-		}
+        public Game(GameBoard board)
+        {
+            _board = board;
+            _rules = new TickTackToeRules(_moves, board);
+        }
 
-	    public bool IsCompleted
-	    {
-	        get
-	        {
-	            Type moveType0 = _board[0, 0].Move.GetType();
-                if (moveType0 != typeof (NoMove))
-                {
-                    Type moveType1 = _board[0, 1].Move.GetType();
-                    Type moveType2 = _board[0, 2].Move.GetType();
-                    if ((moveType0 == moveType1) && (moveType1 == moveType2))
-                        return true;
+        public bool IsCompleted
+        {
+            get
+            {
+                var browser = new BoardBrowser(_board[0, 0], _board);
+                if (browser.Left(2).AreSame())
+                    return true;
 
-                    moveType1 = _board[1, 1].Move.GetType();
-                    moveType2 = _board[2, 2].Move.GetType();
+                if (browser.Right(2).AreSame())
+                    return true;
 
-                    if ((moveType0 == moveType1) && (moveType1 == moveType2))
-                        return true;
+                if (browser.Up(2).AreSame())
+                    return true;
 
-                    moveType1 = _board[0, 1].Move.GetType();
-                    moveType2 = _board[0, 2].Move.GetType();
+                if (browser.Down(2).AreSame())
+                    return true;
 
-                    if ((moveType0 == moveType1) && (moveType1 == moveType2))
-                        return true;
-                }
+                if (browser.LeftUp(2).AreSame())
+                    return true;
+
+                if (browser.LeftDown(2).AreSame())
+                    return true;
+
+                if (browser.RightUp(2).AreSame())
+                    return true;
+
+                if (browser.RightDown(2).AreSame())
+                    return true;
+
+                if (browser.Down().Up().AreSame())
+                    return true;
+
+                if (browser.Right().Left().AreSame())
+                    return true;
+
+                if (browser.LeftUp().RightDown().AreSame())
+                    return true;
+
+                if (browser.LeftDown().RightUp().AreSame())
+                    return true;
 
                 return false;
-	        }
-	    }
+            }
+        }
 
-	    public IGameMove Make(Row row, Column column)
-		{
-			var move = _moves.LastOrDefault();
-			if (move == null || move.GetType() == typeof (TacMove))
-			{
-				move = new TicMove(row, column);
-				
-			}
-			else
-			{
-				move = new TacMove(row, column);
-			}
+        public IGameMove Make(Row row, Column column)
+        {
+            var move = _moves.LastOrDefault();
+            if (move == null || move.GetType() == typeof (TacMove))
+            {
+                move = new TicMove(row, column);
+            }
+            else
+            {
+                move = new TacMove(row, column);
+            }
 
-			Make(move);
-			return move;
-		}
+            Make(move);
+            return move;
+        }
 
-		public void Make(IGameMove move)
-		{
+        public void Make(IGameMove move)
+        {
             var result = _rules.Validate(move);
             if (result.Any())
-			{
-				throw new RuleViolationException(result);
-			}
+            {
+                throw new RuleViolationException(result);
+            }
 
-			move.Execute(_board);
-			_moves.Add(move);
-		}
+            move.Execute(_board);
+            _moves.Add(move);
+        }
 
-		public void Make(IEnumerable<IGameMove> gameMoves)
-		{
-			gameMoves.ToList().ForEach(Make);
-		}
-	}
+        public void Make(IEnumerable<IGameMove> gameMoves)
+        {
+            gameMoves.ToList().ForEach(Make);
+        }
+    }
 }

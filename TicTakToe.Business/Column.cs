@@ -38,6 +38,17 @@ namespace TicTakToe.Business
         {
             return !(arg0.Value == arg1.Value);
         }
+
+        public static Column operator -(Column arg0, Column arg1)
+        {
+            return arg0.Value - arg1.Value;
+        }
+
+        public static Column operator +(Column arg0, Column arg1)
+        {
+            return arg0.Value + arg1.Value;
+        }
+
         public override string ToString()
         {
             return Value.ToString(CultureInfo.InvariantCulture);

@@ -5,7 +5,7 @@ namespace TicTakToe.Business
 {
     public class GameBoard
     {
-        private readonly List<Cell> _cells = new List<Cell>();
+        private readonly List<ICell> _cells = new List<ICell>();
 
         public GameBoard()
         {
@@ -18,12 +18,13 @@ namespace TicTakToe.Business
             }
         }
 
-        public Cell this[Row row, Column column]
+        public ICell this[Row row, Column column]
         {
             get
             {
                 return
-                    (from cell in _cells where cell.Move.Column == column && cell.Move.Row == row select cell).Single();
+                    (from cell in _cells where cell.Move.Column == column && cell.Move.Row == row select cell)
+                        .FirstOrDefault() ?? new CellSafeNull();
             }
         }
 

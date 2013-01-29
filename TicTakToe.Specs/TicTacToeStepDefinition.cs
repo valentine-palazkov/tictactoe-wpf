@@ -60,10 +60,10 @@ namespace TicTakToe.Specs
 
 
         [Then(@"rule violated should be '(.*)'")]
-        public void ThenRuleViolatedShouldBe(string p0)
+        public void ThenRuleViolatedShouldBe(string rule)
         {
             TicTacToeScenarioContext.RuleViolationException.Message.TrimEnd('\r', '\n') .Should()
-                                    .Be("Can not make move at {0, 1} as this move already made");
+                                    .Be(rule);
         }
 
         [Then(@"the game completed")]

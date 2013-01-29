@@ -12,7 +12,7 @@ namespace TicTakToe.Business
 
 		public bool AlreadyMadeOn(GameBoard board)
 		{
-			Cell cell = board[Row, Column];
+			ICell cell = board[Row, Column];
 			return cell.Move.GetType() == GetType();
 		}
 
