@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using FluentAssertions;
 using FluentAssertions.Assertions;
 using TechTalk.SpecFlow;
@@ -51,6 +52,13 @@ namespace TicTakToe.Specs
 			TicTacToeScenarioContext.Game.Make(row, column);
 		}
 
+        [Given(@"board is:")]
+        public void GivenBoardIs(Table table)
+        {
+            IEnumerable<IGameMove> steps = table.ParseMoves().Where(x => x.GetType() != typeof(NoMove));
+            TicTacToeScenarioContext.Board.Restore(steps);
+        }
+
         [Then(@"the board should be:")]
         public void ThenTheResultShouldBe(Table table)
         {
@@ -71,6 +79,5 @@ namespace TicTakToe.Specs
         {
             TicTacToeScenarioContext.Game.IsCompleted.Should().Be(true);
         }
-
     }
 }

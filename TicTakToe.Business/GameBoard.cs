@@ -32,5 +32,16 @@ namespace TicTakToe.Business
         {
             this[move.Row, move.Column].Accept(move);
         }
+
+        public void Restore(IEnumerable<IGameMove> steps)
+        {
+            foreach (var gameMove in steps)
+            {
+                var cellToReplace = this[gameMove.Row, gameMove.Column];
+                var newCell = new Cell(gameMove.Row.Value, gameMove.Column.Value);
+                newCell.Accept(gameMove);
+                _cells[_cells.IndexOf(cellToReplace)] = newCell;
+            }
+        }
     }
 }

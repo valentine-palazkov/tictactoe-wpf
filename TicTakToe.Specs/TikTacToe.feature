@@ -43,14 +43,12 @@ Scenario: Should decide what move is next
 
 @EmptyBoard
 Scenario: Filled diagonal line should complete the game
-	Given gamer puts 'x' at {0, 0}
-		And gamer puts '0' at {0, 1}
-		And gamer puts 'x' at {0, 2}
-		And gamer puts '0' at {1, 0}
-		And gamer puts 'x' at {1, 1}
-		And gamer puts '0' at {1, 2}
-		And gamer puts 'x' at {2, 0}
-		And gamer puts '0' at {2, 1}
+	Given board is:
+	| column1 | column2 | column3 |
+	| x       |         |         |
+	|         | x       |         |
+	|         |         |         |
 	When gamer puts 'x' at {2, 2}
 	Then the game completed
+
 

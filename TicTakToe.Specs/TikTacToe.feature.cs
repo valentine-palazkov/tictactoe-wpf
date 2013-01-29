@@ -219,25 +219,28 @@ this.ScenarioSetup(scenarioInfo);
                         "EmptyBoard"});
 #line 45
 this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                        "column1",
+                        "column2",
+                        "column3"});
+            table5.AddRow(new string[] {
+                        "x",
+                        "",
+                        ""});
+            table5.AddRow(new string[] {
+                        "",
+                        "x",
+                        ""});
+            table5.AddRow(new string[] {
+                        "",
+                        "",
+                        ""});
 #line 46
- testRunner.Given("gamer puts \'x\' at {0, 0}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 47
-  testRunner.And("gamer puts \'0\' at {0, 1}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 48
-  testRunner.And("gamer puts \'x\' at {0, 2}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 49
-  testRunner.And("gamer puts \'0\' at {1, 0}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 50
-  testRunner.And("gamer puts \'x\' at {1, 1}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("board is:", ((string)(null)), table5, "Given ");
 #line 51
-  testRunner.And("gamer puts \'0\' at {1, 2}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 52
-  testRunner.And("gamer puts \'x\' at {2, 0}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 53
-  testRunner.And("gamer puts \'0\' at {2, 1}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 54
  testRunner.When("gamer puts \'x\' at {2, 2}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 55
+#line 52
  testRunner.Then("the game completed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
