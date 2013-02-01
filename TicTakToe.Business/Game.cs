@@ -12,49 +12,32 @@ namespace TicTakToe.Business
         public Game(GameBoard board)
         {
             _board = board;
-            _rules = new TickTackToeRules(_moves, board);
+            _rules = new TickTackToeRules(_moves, board, this);
         }
 
         public bool IsCompleted
         {
             get
             {
-                var browser = new BoardBrowser(_board[0, 0], _board);
-                //if (browser.Left(2).AreSame())
-                //    return true;
-
-                //if (browser.Right(2).AreSame())
-                //    return true;
-
-                //if (browser.Up(2).AreSame())
-                //    return true;
-
-                //if (browser.Down(2).AreSame())
-                //    return true;
-
-                //if (browser.LeftUp(2).AreSame())
-                //    return true;
-
-                //if (browser.LeftDown(2).AreSame())
-                //    return true;
-
-                //if (browser.RightUp(2).AreSame())
-                //    return true;
-
-                if (browser.RightDown(2).AreSame())
+                IGameMove[] gameMoves =
+                    _board.Where(x => x.Move.GetType() != typeof (NoMove)).Select(x => x.Move).ToArray();
+                if (gameMoves.Length == 9)
                     return true;
 
-                //if (browser.Down().Up().AreSame())
-                //    return true;
+                foreach (var move in gameMoves)
+                {
+                    var cell = _board[move.Row, move.Column];
+                    var browser = new BoardBrowser(cell, _board);
 
-                //if (browser.Right().Left().AreSame())
-                //    return true;
+                    if (browser.Down(2).AreSame())
+                        return true;
 
-                //if (browser.LeftUp().RightDown().AreSame())
-                //    return true;
+                    if (browser.Diagonal(2).AreSame())
+                        return true;
 
-                //if (browser.LeftDown().RightUp().AreSame())
-                //    return true;
+                    if (browser.Right(2).AreSame())
+                        return true;
+                }
 
                 return false;
             }

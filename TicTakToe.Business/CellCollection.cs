@@ -5,11 +5,11 @@ namespace TicTakToe.Business
 {
     public class CellCollection
     {
-        private readonly IEnumerable<ICell> _cells;
+        private readonly List<ICell> _cells = new List<ICell>();
 
         public CellCollection(IEnumerable<ICell> cells)
         {
-            _cells = cells;
+            _cells.AddRange(cells);
         }
 
         public bool AreSame()
@@ -17,23 +17,9 @@ namespace TicTakToe.Business
             return _cells.Select(x => x.Move.GetType()).Distinct().Count() == 1;
         }
 
-        public CellCollection Up()
+        public CellCollection Add(CellCollection cells)
         {
-            return this;
-        }
-
-        public CellCollection Left()
-        {
-            return this;
-        }
-
-        public CellCollection RightDown()
-        {
-            return this;
-        }
-
-        public CellCollection RightUp()
-        {
+            _cells.AddRange(cells._cells);
             return this;
         }
     }

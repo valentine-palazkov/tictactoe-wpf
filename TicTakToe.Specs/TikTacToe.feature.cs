@@ -32,7 +32,7 @@ namespace TicTakToe.Specs
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Play interactive tic-tac-toe", "", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Play interactive tic-tac-toe", "\r\nAs I player\r\nI want to train my brain\r\nSo that I can play tic-tak-toe game", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -71,11 +71,11 @@ namespace TicTakToe.Specs
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Should not be able to replace tic with tak", new string[] {
                         "EmptyBoard"});
-#line 4
+#line 8
 this.ScenarioSetup(scenarioInfo);
-#line 5
+#line 9
  testRunner.Given("gamer puts \'x\' at {0, 1}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 6
+#line 10
  testRunner.When("gamer tries to put \'0\' at {0, 1}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -94,9 +94,9 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "",
                         ""});
-#line 7
+#line 11
  testRunner.Then("the board should be:", ((string)(null)), table1, "Then ");
-#line 12
+#line 16
   testRunner.And("rule violated should be \'Can not make move at {0, 1} as this move already made\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -109,11 +109,11 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Should allow tac after tic", new string[] {
                         "EmptyBoard"});
-#line 15
+#line 19
 this.ScenarioSetup(scenarioInfo);
-#line 16
+#line 20
  testRunner.Given("gamer puts \'x\' at {0, 1}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 17
+#line 21
  testRunner.When("gamer tries to put \'0\' at {1, 1}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -132,7 +132,7 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "",
                         ""});
-#line 18
+#line 22
  testRunner.Then("the board should be:", ((string)(null)), table2, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -145,11 +145,11 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Should track move order", new string[] {
                         "EmptyBoard"});
-#line 25
+#line 29
 this.ScenarioSetup(scenarioInfo);
-#line 26
+#line 30
  testRunner.Given("gamer puts \'x\' at {0, 1}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 27
+#line 31
  testRunner.When("gamer tries to put \'x\' at {1, 1}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -168,7 +168,7 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "",
                         ""});
-#line 28
+#line 32
  testRunner.Then("the board should be:", ((string)(null)), table3, "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -181,11 +181,11 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Should decide what move is next", new string[] {
                         "EmptyBoard"});
-#line 35
+#line 39
 this.ScenarioSetup(scenarioInfo);
-#line 36
+#line 40
  testRunner.Given("gamer makes a move at {0, 1}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 37
+#line 41
  testRunner.When("gamer makes a move at {1, 1}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -204,8 +204,80 @@ this.ScenarioSetup(scenarioInfo);
                         "",
                         "",
                         ""});
-#line 38
+#line 42
  testRunner.Then("the board should be:", ((string)(null)), table4, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Filled in center horizontal line should complete the game")]
+        [NUnit.Framework.CategoryAttribute("EmptyBoard")]
+        public virtual void FilledInCenterHorizontalLineShouldCompleteTheGame()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Filled in center horizontal line should complete the game", new string[] {
+                        "EmptyBoard"});
+#line 49
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                        "column1",
+                        "column2",
+                        "column3"});
+            table5.AddRow(new string[] {
+                        "x",
+                        "",
+                        "x"});
+            table5.AddRow(new string[] {
+                        "",
+                        "",
+                        ""});
+            table5.AddRow(new string[] {
+                        "",
+                        "",
+                        ""});
+#line 50
+testRunner.Given("board is:", ((string)(null)), table5, "Given ");
+#line 55
+ testRunner.When("gamer puts \'x\' at {0, 1}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 56
+ testRunner.Then("the game completed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Filled in horizontal line should complete the game")]
+        [NUnit.Framework.CategoryAttribute("EmptyBoard")]
+        public virtual void FilledInHorizontalLineShouldCompleteTheGame()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Filled in horizontal line should complete the game", new string[] {
+                        "EmptyBoard"});
+#line 59
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                        "column1",
+                        "column2",
+                        "column3"});
+            table6.AddRow(new string[] {
+                        "x",
+                        "x",
+                        ""});
+            table6.AddRow(new string[] {
+                        "",
+                        "",
+                        ""});
+            table6.AddRow(new string[] {
+                        "",
+                        "",
+                        ""});
+#line 60
+testRunner.Given("board is:", ((string)(null)), table6, "Given ");
+#line 65
+ testRunner.When("gamer puts \'x\' at {0, 2}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 66
+ testRunner.Then("the game completed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -217,31 +289,231 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Filled diagonal line should complete the game", new string[] {
                         "EmptyBoard"});
-#line 45
+#line 69
 this.ScenarioSetup(scenarioInfo);
 #line hidden
-            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
                         "column1",
                         "column2",
                         "column3"});
-            table5.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "x",
                         "",
                         ""});
-            table5.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "",
                         "x",
                         ""});
-            table5.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         "",
                         "",
                         ""});
-#line 46
- testRunner.Given("board is:", ((string)(null)), table5, "Given ");
-#line 51
+#line 70
+ testRunner.Given("board is:", ((string)(null)), table7, "Given ");
+#line 75
  testRunner.When("gamer puts \'x\' at {2, 2}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 52
+#line 76
  testRunner.Then("the game completed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Filled in center diagonal line should complete the game")]
+        [NUnit.Framework.CategoryAttribute("EmptyBoard")]
+        public virtual void FilledInCenterDiagonalLineShouldCompleteTheGame()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Filled in center diagonal line should complete the game", new string[] {
+                        "EmptyBoard"});
+#line 79
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                        "column1",
+                        "column2",
+                        "column3"});
+            table8.AddRow(new string[] {
+                        "x",
+                        "",
+                        ""});
+            table8.AddRow(new string[] {
+                        "",
+                        "",
+                        ""});
+            table8.AddRow(new string[] {
+                        "",
+                        "",
+                        "x"});
+#line 80
+ testRunner.Given("board is:", ((string)(null)), table8, "Given ");
+#line 85
+ testRunner.When("gamer puts \'x\' at {1, 1}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 86
+ testRunner.Then("the game completed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Filled in center vertical line should complete the game")]
+        [NUnit.Framework.CategoryAttribute("EmptyBoard")]
+        public virtual void FilledInCenterVerticalLineShouldCompleteTheGame()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Filled in center vertical line should complete the game", new string[] {
+                        "EmptyBoard"});
+#line 89
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+                        "column1",
+                        "column2",
+                        "column3"});
+            table9.AddRow(new string[] {
+                        "",
+                        "x",
+                        ""});
+            table9.AddRow(new string[] {
+                        "",
+                        "",
+                        ""});
+            table9.AddRow(new string[] {
+                        "",
+                        "x",
+                        ""});
+#line 90
+testRunner.Given("board is:", ((string)(null)), table9, "Given ");
+#line 95
+ testRunner.When("gamer puts \'x\' at {1, 1}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 96
+testRunner.Then("the game completed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Filled vertical line should complete the game")]
+        [NUnit.Framework.CategoryAttribute("EmptyBoard")]
+        public virtual void FilledVerticalLineShouldCompleteTheGame()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Filled vertical line should complete the game", new string[] {
+                        "EmptyBoard"});
+#line 100
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+                        "column1",
+                        "column2",
+                        "column3"});
+            table10.AddRow(new string[] {
+                        "x",
+                        "",
+                        ""});
+            table10.AddRow(new string[] {
+                        "x",
+                        "",
+                        ""});
+            table10.AddRow(new string[] {
+                        "",
+                        "",
+                        ""});
+#line 101
+ testRunner.Given("board is:", ((string)(null)), table10, "Given ");
+#line 106
+ testRunner.When("gamer puts \'x\' at {2, 0}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 107
+ testRunner.Then("the game completed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Filled all cells will mean that whole game completed")]
+        [NUnit.Framework.CategoryAttribute("EmptyBoard")]
+        public virtual void FilledAllCellsWillMeanThatWholeGameCompleted()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Filled all cells will mean that whole game completed", new string[] {
+                        "EmptyBoard"});
+#line 110
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+                        "column1",
+                        "column2",
+                        "column3"});
+            table11.AddRow(new string[] {
+                        "x",
+                        "0",
+                        "0"});
+            table11.AddRow(new string[] {
+                        "0",
+                        "x",
+                        "x"});
+            table11.AddRow(new string[] {
+                        "",
+                        "0",
+                        "0"});
+#line 111
+ testRunner.Given("board is:", ((string)(null)), table11, "Given ");
+#line 116
+ testRunner.When("gamer puts \'x\' at {2, 0}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 117
+ testRunner.Then("the game completed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Completed game should no allow new movies")]
+        [NUnit.Framework.CategoryAttribute("EmptyBoard")]
+        public virtual void CompletedGameShouldNoAllowNewMovies()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Completed game should no allow new movies", new string[] {
+                        "EmptyBoard"});
+#line 120
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+                        "column1",
+                        "column2",
+                        "column3"});
+            table12.AddRow(new string[] {
+                        "x",
+                        "",
+                        ""});
+            table12.AddRow(new string[] {
+                        "x",
+                        "",
+                        ""});
+            table12.AddRow(new string[] {
+                        "x",
+                        "",
+                        ""});
+#line 121
+ testRunner.Given("board is:", ((string)(null)), table12, "Given ");
+#line 126
+ testRunner.When("gamer tries to put \'0\' at {0, 1}", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
+                        "column1",
+                        "column2",
+                        "column3"});
+            table13.AddRow(new string[] {
+                        "x",
+                        "",
+                        ""});
+            table13.AddRow(new string[] {
+                        "x",
+                        "",
+                        ""});
+            table13.AddRow(new string[] {
+                        "x",
+                        "",
+                        ""});
+#line 127
+ testRunner.Then("the board should be:", ((string)(null)), table13, "Then ");
+#line 132
+  testRunner.And("rule violated should be \'Can not make move at {0, 1} as the game already complete" +
+                    "d\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }

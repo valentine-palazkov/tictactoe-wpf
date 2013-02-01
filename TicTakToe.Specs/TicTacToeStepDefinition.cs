@@ -63,7 +63,10 @@ namespace TicTakToe.Specs
         public void ThenTheResultShouldBe(Table table)
         {
             IEnumerable<IGameMove> steps = table.ParseMoves();
-            TicTacToeScenarioContext.Board.Should().Match(steps);
+            var board = new GameBoard();
+            board.Restore(steps);
+            
+            TicTacToeScenarioContext.Board.Should().Match(board);
         }
 
 
@@ -77,7 +80,7 @@ namespace TicTakToe.Specs
         [Then(@"the game completed")]
         public void ThenTheGameCompleted()
         {
-            TicTacToeScenarioContext.Game.IsCompleted.Should().Be(true);
+            TicTacToeScenarioContext.Game.IsCompleted.Should().Be(true, "The game is not completed");
         }
     }
 }

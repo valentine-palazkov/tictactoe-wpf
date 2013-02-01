@@ -1,9 +1,10 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace TicTakToe.Business
 {
-    public class GameBoard
+    public class GameBoard : IEnumerable<ICell>
     {
         private readonly List<ICell> _cells = new List<ICell>();
 
@@ -42,6 +43,16 @@ namespace TicTakToe.Business
                 newCell.Accept(gameMove);
                 _cells[_cells.IndexOf(cellToReplace)] = newCell;
             }
+        }
+
+        public IEnumerator<ICell> GetEnumerator()
+        {
+            return _cells.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }

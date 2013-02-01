@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System.Linq;
 using FluentAssertions.Primitives;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
@@ -15,12 +15,13 @@ namespace TicTakToe.Specs
             _board = board;
         }
 
-        public void Match(IEnumerable<IGameMove> moves)
+        public void Match(GameBoard moves)
         {
-            foreach (IGameMove move in moves)
-            {
-                Assert.That(move.AlreadyMadeOn(_board), Is.True, "Move {0} is not done", move);
-            }
+            var moveThatWeHave = _board.Select(x => x.Move.ToString()).ToArray();
+
+            var notExpectedMoves = moveThatWeHave.Except(moves.Select(x => x.Move.ToString()).ToArray()).ToArray();
+
+            Assert.That(notExpectedMoves, Is.Empty);
         }
     }
 }

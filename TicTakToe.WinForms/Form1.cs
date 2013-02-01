@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using StructureMap;
 
 namespace TicTakToe.WinForms
 {
@@ -7,7 +8,7 @@ namespace TicTakToe.WinForms
         public Form1()
         {
             InitializeComponent();
-            Controls.Add(new TicTakToeView());
+            Controls.Add(ObjectFactory.GetInstance<TicTakToeView>());
         }
     }
 }

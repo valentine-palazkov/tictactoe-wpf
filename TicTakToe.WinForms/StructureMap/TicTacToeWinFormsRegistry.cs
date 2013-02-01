@@ -1,7 +1,7 @@
-﻿using StructureMap.Configuration.DSL;
+using StructureMap.Configuration.DSL;
 using TicTakToe.Business;
 
-namespace TicTakToe.WinForms
+namespace TicTakToe.WinForms.StructureMap
 {
 	public class TicTacToeWinFormsRegistry : Registry
 	{

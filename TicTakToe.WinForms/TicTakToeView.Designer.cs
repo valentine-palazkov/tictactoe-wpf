@@ -1,11 +1,16 @@
-﻿namespace TicTakToe.WinForms
+﻿using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
+using TicTakToe.WinForms.ServiceBus.Messages;
+
+namespace TicTakToe.WinForms
 {
     partial class TicTakToeView
     {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary> 
         /// Clean up any resources being used.
@@ -28,44 +33,41 @@
         /// </summary>
         private void InitializeComponent()
         {
-			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+			this.tableLayoutPanel1 = new TableLayoutPanel();
 			this.SuspendLayout();
 			// 
 			// tableLayoutPanel1
 			// 
-			this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+			this.tableLayoutPanel1.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) 
+            | AnchorStyles.Left) 
+            | AnchorStyles.Right)));
 			this.tableLayoutPanel1.ColumnCount = 3;
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 3);
+			this.tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.33334F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.33333F));
+			this.tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.33333F));
+			this.tableLayoutPanel1.Location = new Point(0, 3);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
 			this.tableLayoutPanel1.RowCount = 3;
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(390, 348);
+			this.tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.33334F));
+			this.tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.33334F));
+			this.tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.33334F));
+			this.tableLayoutPanel1.Size = new Size(390, 348);
 			this.tableLayoutPanel1.TabIndex = 0;
 			// 
 			// TicTakToeView
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.BackColor = System.Drawing.SystemColors.HotTrack;
+			this.AutoScaleDimensions = new SizeF(6F, 13F);
+			this.AutoScaleMode = AutoScaleMode.Font;
+			this.BackColor = SystemColors.HotTrack;
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Name = "TicTakToeView";
-			this.Size = new System.Drawing.Size(390, 351);
+			this.Size = new Size(390, 351);
 			this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-
-
-
+        private TableLayoutPanel tableLayoutPanel1;
     }
 }

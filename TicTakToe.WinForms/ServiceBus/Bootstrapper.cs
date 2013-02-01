@@ -1,4 +1,5 @@
 ﻿using Rhino.ServiceBus.StructureMap;
+using TicTakToe.WinForms.StructureMap;
 
 namespace TicTakToe.WinForms.ServiceBus
 {
