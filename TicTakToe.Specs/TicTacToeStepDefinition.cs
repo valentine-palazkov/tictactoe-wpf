@@ -5,6 +5,7 @@ using FluentAssertions;
 using FluentAssertions.Assertions;
 using TechTalk.SpecFlow;
 using TicTakToe.Business;
+using TicTakToe.Business.Rules;
 
 namespace TicTakToe.Specs
 {

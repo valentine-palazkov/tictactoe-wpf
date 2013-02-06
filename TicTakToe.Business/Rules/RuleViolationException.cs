@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace TicTakToe.Business
+namespace TicTakToe.Business.Rules
 {
     public class RuleViolationException : ApplicationException
     {

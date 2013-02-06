@@ -1,4 +1,4 @@
-namespace TicTakToe.Business
+namespace TicTakToe.Business.Rules
 {
     public abstract class RuleViolation
     {

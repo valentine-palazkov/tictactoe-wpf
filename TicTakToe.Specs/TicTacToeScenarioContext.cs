@@ -1,5 +1,6 @@
 using TechTalk.SpecFlow;
 using TicTakToe.Business;
+using TicTakToe.Business.Rules;
 
 namespace TicTakToe.Specs
 {

@@ -50,15 +50,18 @@
     <Compile Include="GameMoveSafeNull.cs" />
     <Compile Include="ICell.cs" />
     <Compile Include="IGameMove.cs" />
-    <Compile Include="MoveOrderViolationResult.cs" />
     <Compile Include="NoMove.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Row.cs" />
-    <Compile Include="RuleViolationException.cs" />
+    <Compile Include="Rules\GameAlreadyCompletedRuleValidation.cs" />
+    <Compile Include="Rules\MoveOrderViolationResult.cs" />
+    <Compile Include="Rules\RuleViolationException.cs" />
+    <Compile Include="Rules\TheSameMoveShouldNotBeMadeAgainRuleValidation.cs" />
+    <Compile Include="Rules\TickTackToeRules.cs" />
     <Compile Include="TacMove.cs" />
-    <Compile Include="TickTackToeRules.cs" />
     <Compile Include="TicMove.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

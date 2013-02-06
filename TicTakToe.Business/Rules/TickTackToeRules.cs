@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TicTakToe.Business
+namespace TicTakToe.Business.Rules
 {
     internal class TickTackToeRules
     {
@@ -48,44 +48,6 @@ namespace TicTakToe.Business
             if (lastMove != null && lastMove.GetType() == move.GetType())
             {
                 validationResult.Add(new MoveOrderRuleViolation(move));
-            }
-        }
-    }
-
-    internal class GameAlreadyCompletedRuleValidation : RuleViolation
-    {
-        private readonly IGameMove _move;
-
-        public GameAlreadyCompletedRuleValidation(IGameMove move)
-        {
-            _move = move;
-        }
-
-        public override string Message
-        {
-            get
-            {
-                return string.Format("Can not make move at {{{0}, {1}}} as the game already completed", _move.Row,
-                                     _move.Column);
-            }
-        }
-    }
-
-    public class TheSameMoveShouldNotBeMadeAgainRuleValidation : RuleViolation
-    {
-        private readonly IGameMove _move;
-
-        public TheSameMoveShouldNotBeMadeAgainRuleValidation(IGameMove move)
-        {
-            _move = move;
-        }
-
-        public override string Message
-        {
-            get
-            {
-                return string.Format("Can not make move at {{{0}, {1}}} as this move already made", _move.Row,
-                                     _move.Column);
             }
         }
     }

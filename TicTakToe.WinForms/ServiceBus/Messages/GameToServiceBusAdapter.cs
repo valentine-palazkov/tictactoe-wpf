@@ -1,5 +1,6 @@
 using Rhino.ServiceBus;
 using TicTakToe.Business;
+using TicTakToe.Business.Rules;
 
 namespace TicTakToe.WinForms.ServiceBus.Messages
 {

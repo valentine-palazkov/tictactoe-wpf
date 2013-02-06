@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using TicTakToe.Business.Rules;
 
 namespace TicTakToe.Business
 {
